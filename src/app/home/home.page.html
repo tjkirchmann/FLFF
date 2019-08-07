@@ -1,14 +1,63 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-toolbar color="f1">
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+    <section>
+        <img src="/assets/img/FF.png" class="headerPic"/>
+    </section>
+
+    <section *ngIf="errorTrigger">
+        <ion-label>
+            {{errorMessage}}
+        </ion-label>
+    </section>
+
+    <section>
+        <ion-item>
+            <ion-label class="formLabel">
+                Email
+            </ion-label>
+            <ion-input [(ngModel)]="user.email" required email></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label class="formLabel">
+                Password
+            </ion-label>
+            <ion-input type="password" required minlength="8" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+    </section>
+
+    <section *ngIf="wantRegister">
+        <ion-item>
+            <ion-label class="formLabel">
+                Full Name
+            </ion-label>
+            <ion-input [(ngModel)]="user.name" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label class="formLabel">
+                Age
+            </ion-label>
+            <ion-input type="number" required [(ngModel)]="user.age"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label class="formLabel">
+                Username
+            </ion-label>
+            <ion-input required minlength="5" maxlength="18" [(ngModel)]="user.username"></ion-input>
+        </ion-item>
+    </section>
+
+    <section *ngIf="!wantRegister; else registerButtons" class="buttonDeck" align="center">
+        <ion-button color="f1" (click)="login()" class="HButtons">Login</ion-button>
+        <ion-button color="f1" (click)="registerField()" class="HButtons">Register</ion-button>
+    </section>
+
+    <ng-template #registerButtons class="buttonDeck" align="center">
+        <ion-button color="light" (click)="backToLogin()" class="HButtons">Back to Login</ion-button>
+        <ion-button color="f1" (click)="createAccount()" class="HButtons">Submit</ion-button>
+    </ng-template>
 </ion-content>

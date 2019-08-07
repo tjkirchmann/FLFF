@@ -3,8 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+    production: false,
+    firebase: {
+        apiKey: "AIzaSyBppXToT2xQ1oI8AibFfySUZkyLzmX_wME",
+        authDomain: "formula-fun.firebaseapp.com",
+        databaseURL: "https://formula-fun.firebaseio.com",
+        projectId: "formula-fun",
+        storageBucket: "",
+        messagingSenderId: "121594301424",
+    }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
