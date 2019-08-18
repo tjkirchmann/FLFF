@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Favorite Driver and Team</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label>Favorite Driver</ion-label>
+        <ion-select placeholder="Select One" [(ngModel)]="favDriver">
+            <ion-select-option>Lewis Hamilton</ion-select-option>
+            <ion-select-option>Valterri Bottas</ion-select-option>
+            <ion-select-option>Sebastian Vettel</ion-select-option>
+            <ion-select-option>Charles Leclerc</ion-select-option>
+            <ion-select-option>Max Verstappen</ion-select-option>
+            <ion-select-option>Pierre Gasly</ion-select-option>
+            <ion-select-option>Carlos Sainz</ion-select-option>
+            <ion-select-option>Lando Norris</ion-select-option>
+            <ion-select-option>Daniel Ricciardo</ion-select-option>
+            <ion-select-option>Nico Hulkenburg</ion-select-option>
+            <ion-select-option>Sergio Perez</ion-select-option>
+            <ion-select-option>Lance Stroll</ion-select-option>
+            <ion-select-option>Kimmi Raikkonen</ion-select-option>
+            <ion-select-option>Antonio Giovinazzi</ion-select-option>
+            <ion-select-option>Romain Grosjean</ion-select-option>
+            <ion-select-option>Kevin Magnussen</ion-select-option>
+            <ion-select-option>Daniel Kvyat</ion-select-option>
+            <ion-select-option>Alexander Albon</ion-select-option>
+            <ion-select-option>George Russell</ion-select-option>
+            <ion-select-option>Robert Kubica</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Favorite Team</ion-label>
+        <ion-select placeholder="Select One" [(ngModel)]="favTeam">
+            <ion-select-option>Mercedes</ion-select-option>
+            <ion-select-option>Ferrari</ion-select-option>
+            <ion-select-option>Red Bull</ion-select-option>
+            <ion-select-option>Mclaren</ion-select-option>
+            <ion-select-option>Renault</ion-select-option>
+            <ion-select-option>Haas</ion-select-option>
+            <ion-select-option>Racing Point</ion-select-option>
+            <ion-select-option>Toro Rosso</ion-select-option>
+            <ion-select-option>Williams</ion-select-option>
+  
+        </ion-select>
+    </ion-item>
+    <ion-button color="f1" (click)="closeModal()">Sumbit Changes</ion-button>
+</ion-content>

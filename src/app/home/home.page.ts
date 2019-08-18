@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router, Params } from '@angular/router';
-import { FirestoreService } from '../services/data/firestore.service';
+import { User } from 'src/app/services/register-profile.service';
+import { registerProfileService } from 'src/app/services/register-profile.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 
-interface User {
-    email?: string;
-    password?: string;
-    name?: string;
-    age?: number;
-    username?: string;
+export interface User {
+    email: string;
+    password: string;
+    age: number;
+    username: string;
+    weekendPoints: number = 0;
+    seasonPoints: number = 0;
+    allPoints: number = 0;
+    favDriver: string = '';
+    favTeam: string = '';
 }
 
 @Component({
@@ -21,9 +26,7 @@ export class HomePage {
 
     user: User = {
         email: '',
-        password: '',
-        name: '',
-        age: 0,
+        age: '',
         username: '',
     }
 
@@ -36,7 +39,6 @@ export class HomePage {
         public afAuth: AngularFireAuth,
         private router: Router,
         public loadingCtrl: LoadingController,
-        public firestoreService: FirestoreService,
     ) { }
 
     async registerField() {
@@ -58,29 +60,14 @@ export class HomePage {
                 this.successMessage = "Your account has been created, please login";
                 this.wantRegister = false;
                 this.errorTrigger = false;
-
-                const email = this.user.email;
-                const fullName = this.user.name;
-                const age = this.user.age;
-                const username = this.user.username;
-
-                this.firestoreService
-                    .createProfile(email, fullName, age, username)
-                    .then(
-                        () => {
-
-                        },
-                        error => {
-                            console.error(error);
-                        }
-                    )
+                this.registerProfileService.addUser(this.User);
             }, err => {
                     console.log(err);
                     this.errorMessage = err.message;
                     this.successMessage = "";
                     this.errorTrigger = true;
             })
-        
+
     }
 
     login() {
@@ -97,5 +84,10 @@ export class HomePage {
                     this.errorTrigger = true;
             }
             )
+    }
+
+    ngOnInit() {
+      this.registerProfileService.getUsers()
+      .subscribe(users => this.users = users)
     }
 }

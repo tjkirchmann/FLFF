@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router, Params } from '@angular/router';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-tabs',
@@ -7,7 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() { }
+
+  constructor(
+      public af: AngularFireAuth,
+      private router: Router,
+  ) {}
+
+signOut () {
+  this.af.auth.signOut();
+  this.router.navigate(['/home'])
+}
 
   ngOnInit() {
   }

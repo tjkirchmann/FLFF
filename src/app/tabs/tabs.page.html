@@ -1,9 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>tabs</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="f1">
+        <ion-button color="light" class="signOutB" (click)="signOut()">Sign Out</ion-button>
+    </ion-toolbar>
+    <ion-toolbar color="dark" class="stripe"></ion-toolbar>
+
 </ion-header>
 
-<ion-content>
 
-</ion-content>
+
+
+<ion-tabs>
+    <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="profile" class="tab">
+            <ion-icon name="contact"></ion-icon>
+            <ion-label>Profile</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="play" class="tab">
+            <ion-icon name="play"></ion-icon>
+            <ion-label>Play</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="leaderboard" class="tab">
+            <ion-icon name="analytics"></ion-icon>
+            <ion-label>Leaderboard</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+</ion-tabs>

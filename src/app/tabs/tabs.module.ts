@@ -9,9 +9,43 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: '',
-    component: TabsPage
-  }
+    path: 'tabs',
+        component: TabsPage,
+        children: [
+            {
+                path: 'profile',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: '../profile/profile.module#ProfilePageModule',
+                    }
+                ]
+            },
+            {
+                path: 'play',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: '../play/play.module#PlayPageModule',
+                    }
+                ]
+            },
+            {
+                path: 'leaderboard',
+                children: [
+                    {
+                        path: '',
+                        loadChildren: '../leaderboard/leaderboard.module#LeaderboardPageModule',
+                    }
+                ]
+            },
+        ]
+    },
+    {
+        path: '',
+        redirectTo: 'tabs/profile',
+        pathMatch: 'full',
+    }
 ];
 
 @NgModule({
